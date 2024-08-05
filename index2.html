@@ -70,11 +70,26 @@
 </div>
 <div id="cards"></div>
 <div class="flex jusitify-center w-full translate-y-[400px]">
-    <img class="w-14" id="airplaneObject" src="https://www.svgrepo.com/show/396199/airplane.svg" alt="">
+    <div id="airplaneObject">
+        <img class="w-14"  src="https://www.svgrepo.com/show/396199/airplane.svg" alt="">
+
+    </div>
+    
 </div>
 
 
 <script src="app.js"></script>
+<div class="h-36"></div>
+<script src="ProjectsSection.js"></script>
+<div class="">
+    <div class="h-screen w-full overflow-hidden" style="background-image: url(https://jayd719.github.io/assets/images/code/img2.png); background-position: center; background-size: contain; background-repeat: no-repeat;">
+        <div class="grid grid-cols-12" id="projectsContainer"></div>
+    </div>
+</div>
+
+<script>
+IntroTextTiles(createTabs(160))
+</script>
 <script>
 addThemeChange()
 document.getElementById("themeChanger").addEventListener("click",()=>{
@@ -147,11 +162,13 @@ setTimeout(()=>{
 setTimeout(()=>{
     let airplaneObject = document.getElementById("airplaneObject")
     let k=0;
+    let rotate = 0
     airplaneAnimate = setInterval(()=>{
-        let y = (Math.log( Math.pow(k, 3))*7);
+        let y = k/2;
         console.log(y)
-        airplaneObject.style.transform = `translateX(${k}px) translateY(-${y}px)`
+        airplaneObject.style.transform = `translateX(${k}%) translateY(-${y}%) rotate(${rotate}deg)`
         k+=1
+        rotate+=.01
     },10)
 
     setTimeout(() => {

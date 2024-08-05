@@ -1,0 +1,14 @@
+@startuml contextualLevelOne
+
+usecase login
+usecase createAccount
+usecase logout
+usecase viewLandingPage
+usecase createMedicalRecord
+usecase showMedicalRecord
+usecase searchForDoctor
+
+actor visitor
+actor registeredUser
+
+@enduml
