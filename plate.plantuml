@@ -1,0 +1,38 @@
+@startuml NumberPlateScanner
+left to right direction
+
+actor Scanner as scanner <<System>>
+actor Resident
+actor Admin
+
+package "EntryScanner" {
+  usecase "scanLicensePlate" as scanLicense
+  usecase "createEntryInLog" as createEntry
+  usecase "outputVehicleType" as outputVehicle
+
+  scanner -> scanLicense
+  scanLicense -> createEntry
+  createEntry -> outputVehicle
+}
+
+package "WebApp" {
+  usecase "createEntryTicket" as createTicket
+  usecase "viewStoredFootage" as viewFootage
+  usecase "viewEntryLog" as viewLog
+  usecase "verifyEmail" as verifyEmail
+  usecase "generateLoginOTP" as generateOTP
+  usecase "addNewResidentsToSystem" as addResidents
+
+  Resident -> createTicket
+  Resident -> viewFootage
+  Resident -> viewLog
+  Admin -> viewLog
+  Admin -d-> addResidents
+
+  createTicket --|> verifyEmail : <<includes>>
+  verifyEmail --|> generateOTP : <<extends>>
+  addResidents --|> verifyEmail : <<includes>>
+}
+
+Resident --|> Admin : inherits
+@enduml

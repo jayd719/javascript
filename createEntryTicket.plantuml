@@ -1,0 +1,34 @@
+@startuml ss
+
+entity Resident {
+    *FirstName: VarChar(60)
+    *LastName: VarChar(60)
+    *unitNumber: int <<Range 1-96>>
+    *phoneNumber: int <<PK>>
+}
+
+entity Vehicles {
+    *number: VarChar(12) <<PK>>
+    *make: String <<optional>>
+    owner: Resident/VisitorTicket <<FK, 1:M, on cascade delete>>
+}
+
+entity VisitorTicket {
+    *ValidTill: DateTime
+    *createdOn: DateTime
+    createdBy: Resident
+    type: TYPE
+}
+
+entity EntryLog {
+    *createdOn: DateTime
+    *date: Date
+    *time: Time
+    *type: TYPE <<Registered, Guest, Unregistered>>
+}
+
+Resident "1" -- "M" VisitorTicket : "createdBy"
+VisitorTicket "1" -- "1" Vehicles : "owner"
+Resident "1" -- "M" Vehicles : "owner"
+
+@enduml

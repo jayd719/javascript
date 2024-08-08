@@ -11,6 +11,17 @@
 </head>
 
 <body class="bg-base-200 min-h-screen overflow-x-hidden">
+<script src="appThemController.js"></script>
+<script>
+const th = new themeController("light", "dim");
+
+
+</script>
+
+
+
+
+
 <div class="fixed w-full">
 
     <div class="navbar px-1 fixed top-0 hover:bg-base-100 transition duration-300 ease-in-out hover:shadow-2xl " style="z-index: 100;">
@@ -78,18 +89,16 @@
 </div>
 
 
-<script src="app.js"></script>
+
 <div class="h-36"></div>
 <script src="ProjectsSection.js"></script>
-<div class="">
-    <div class="h-screen w-full overflow-hidden" style="background-image: url(https://jayd719.github.io/assets/images/code/img2.png); background-position: center; background-size: contain; background-repeat: no-repeat;">
-        <div class="grid grid-cols-12" id="projectsContainer"></div>
-    </div>
-</div>
+
 
 <script>
 IntroTextTiles(createTabs(160))
 </script>
+
+
 <script>
 addThemeChange()
 document.getElementById("themeChanger").addEventListener("click",()=>{
